@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+    
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppXiamrinStore.MainPage"
+             NavigationPage.HasNavigationBar="False">
+   
+
+    <Grid RowDefinitions="*,Auto" BackgroundColor="AliceBlue">
+        
+        <Image Grid.RowSpan="2" Source="Resouces/drawable/img.png" VerticalOptions="Start" Aspect="AspectFit"/>
+        <Label Grid.Row="0" Text="Hi!" FontSize="34" TextColor="#40408e" VerticalOptions="End" FontAttributes="Bold" Padding="20,0,0,20"/>
+        <Frame Grid.Row="1" HasShadow="False" Margin="15,0,15,50" VerticalOptions="FillAndExpand" CornerRadius="20" Opacity="0.9" BackgroundColor="White">
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="25" Padding="0,10,0,0">
+                <Image  Source="Resouces/drawable/login.png" Grid.Row="0" VerticalOptions="Start" Aspect="AspectFit"/>
+                <Entry  Margin="0,20,0,0" Grid.Row="1" TextColor="#40408e" PlaceholderColor="#40408e" Placeholder="Usuario:" HeightRequest="40"/>
+                <Entry  Grid.ColumnSpan="1"  Margin="0,20,0,0" Grid.Row="2" TextColor="#40408e" PlaceholderColor="#40408e" IsPassword="True" Placeholder="Contraseña:" HeightRequest="40"/>
+                <Button x:Name="btnInicio" Grid.Row="3" Clicked="OnBtnInicio" BackgroundColor="Pink" Text="Iniciar sesión"></Button>
+                    
+                <Label Grid.Row="4" Margin="0,10,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="¿No tiene cuenta? "  TextColor="#40408e"/>
+                            <Span Text="Registrarse" TextColor="DeepPink" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Grid.Row="5" Text="¿Olvidó su contraseña?" TextColor="DeepPink" FontAttributes="Bold"/>
+            </Grid>
+        </Frame>
+    </Grid>
+    
+</ContentPage>

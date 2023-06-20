@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppXiamrinStore.View.CrearProducto"
+              NavigationPage.HasNavigationBar="False"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="Pink" Padding="24" CornerRadius="0">
+                <Label Text="Bienvenidos" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <Grid RowDefinitions="*,Auto">
+               
+                <Frame Grid.Row="1" HasShadow="False" Margin="15,0,15,50" VerticalOptions="FillAndExpand" CornerRadius="20" Opacity="0.9" BackgroundColor="#2e2b2c">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="25" Padding="0,10,0,0">
+                       
+                        <Label Text="Crear Producto" HorizontalTextAlignment="Center" TextColor="Pink" FontSize="24"/>
+                        <Entry x:Name="nombreEntry" Text=""  Margin="0,10,0,0" Grid.Row="1"  Placeholder="Nombre:" HeightRequest="40"/>
+                        <Entry x:Name="categoriaEntry" Text=""  Grid.ColumnSpan="1" Margin="0,5,0,0" Grid.Row="2" Placeholder="Categoria:" HeightRequest="40"/>
+                        <Entry  x:Name="precioEntry" Text="$"  Margin="0,5,0,0" Grid.Row="3" Placeholder="Precio:" HeightRequest="40"/>
+                        <Entry x:Name="proveedorEntry" Text=""  Margin="0,5,0,0" Grid.Row="4" Placeholder="Proveedor:" HeightRequest="50"/>
+                        <Entry x:Name="rutaEntry" Text="Resource/drawable/producto1.png"  Margin="0,5,0,0" Grid.Row="5" Placeholder="Ruta:" HeightRequest="40"/>
+                        <Button x:Name="btnCrear"   Grid.Row="6"  Clicked="OnBtnCrear" BackgroundColor="Pink" Text="Crear"></Button>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </StackLayout>
+        
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppXiamrinStore.View.ListarBoutique"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+
+       <ContentPage.Content>
+
+        <StackLayout  x:Name="listar" BackgroundColor="AliceBlue">
+            
+                <!-- Main layout-->
+                <Grid RowDefinitions="Auto,Auto,Auto,*,Auto,Auto" ColumnDefinitions="*,Auto" VerticalOptions="StartAndExpand" Padding="
+                      15,20,30,0" BackgroundColor="AliceBlue">
+
+                    <!-- Here add the code that is being explained in this block -->
+                    <!-- 3. Header-->
+                    <Grid Grid.Row="0" Grid.ColumnSpan="2" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*" Padding="0,0,0,0">
+                        <!--Profile picture-->
+                        <ImageButton Grid.Column="0" Grid.RowSpan="2" Source="login.png" HeightRequest="50" WidthRequest="50" BackgroundColor="AliceBlue" HorizontalOptions="Start"  CornerRadius="10"/>
+                        <!--Welcome & Name-->
+                        <Label Grid.Column="1" Grid.Row="0" Text="Welcome" TextColor="Black" FontAttributes="Bold" Margin="20,0,0,0"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="Mariana " TextColor="Black" FontAttributes="Bold" Margin="20,0,0,0"/>
+                        <!--Bell-->
+                        <Image Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="Bell" TranslationX="5" BackgroundColor="Aqua"/>
+                    </Grid>
+
+                    <!--Search & Action Button-->
+                    <SearchBar Grid.Column="0" Grid.Row="1" Margin="-5,10,0,10"  BackgroundColor="LightSlateGray" />
+                    <Button Grid.Column="1" Grid.Row="1" BackgroundColor="DeepPink" CornerRadius="9" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="50" ImageSource="List"/>
+
+                    <!-- Here add the code that is being explained in the next block-->
+                </Grid>
+           
+
+            <Grid Padding="8,-25,0,0" RowDefinitions="*,Auto,Auto,Auto" ColumnDefinitions="*,Auto, auto,auto, auto,auto,auto,auto, auto,auto, auto,auto,auto,auto, auto,auto,auto,auto,auto,auto,auto,auto, auto,auto,auto,auto">
+                    <Frame Grid.ColumnSpan="1" Grid.Row="2" IsClippedToBounds="True" CornerRadius="25" HasShadow="False" Padding="0">
+                    <Button x:Name="btnAgregar" Clicked="OnBtnAgregar" BackgroundColor="Pink" Text="Agregar nuevo" ImageSource="agregar"></Button>
+                </Frame>
+                </Grid>
+                <CollectionView x:Name="collectionView" Grid.ColumnSpan="2" Grid.Row="4" VerticalScrollBarVisibility="Never"
+                SelectionMode="Single"  HeightRequest="680" SelectionChanged="collectionView_SelectionChanged"
+                ItemsLayout="VerticalGrid, 2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="18,0,10,10">
+                            <Frame Padding="15,15,15,15" WidthRequest="145" HeightRequest="180"  CornerRadius="20" HorizontalOptions="Start" HasShadow="False">
+                                <Grid RowDefinitions="*,Auto,Auto,Auto,Auto,Auto,auto,auto" ColumnDefinitions="*,Auto, auto,auto">
+                                    <Frame Grid.ColumnSpan="4" Grid.Row="0" IsClippedToBounds="True" CornerRadius="25" HasShadow="False" Padding="0">
+                                        <Image Source="{Binding Ruta}" Aspect="AspectFit" />
+                                    </Frame>
+                                    <Label x:Name="nombre" Grid.ColumnSpan="2" Grid.Row="3" Text="{Binding Nombre}"  TextColor="Black" FontAttributes="Bold" Padding="0,10,0,0"/>
+                                    <Label Grid.ColumnSpan="3" Grid.Row="4" Text="{Binding Precio}" TextColor="Black" FontAttributes="Bold"/>
+                                    <!--<Label Grid.ColumnSpan="4" Grid.Row="5"  Text="{Binding Categoria}" TextColor="Black" FontAttributes="Bold"/> -->
+                                    <Button x:Name="btnEliminar" Clicked="OnBtnEliminar"  Command="{Binding Source={x:Reference Name=btnEliminar}}"  ImageSource="eliminar.png" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"  HorizontalOptions="End" WidthRequest="35" HeightRequest="35" CornerRadius="8" VerticalOptions="Center" BackgroundColor="White" />
+                                    <Button x:Name="btnActualizar" Clicked="OnBtnActualizar"  Command="{Binding Source={x:Reference Name=btnActualizar}}" ImageSource="editar.png" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  HorizontalOptions="End" WidthRequest="35" HeightRequest="35" CornerRadius="8" VerticalOptions="Center"  BackgroundColor="white"/>
+
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <!-- Here add the code that is being explained in the next block-->
+            <!--<Button x:Name="btnCrear" Clicked="OnBtnCrear" BackgroundColor="Pink" Text="Crear"></Button>-->
+            <!--<Button x:Name="btnActualizar" Clicked="OnBtnActualizar" BackgroundColor="Pink" Text="Actualizar"></Button>-->
+            <!-- <Button x:Name="btnListar" Clicked="OnBtnListar" BackgroundColor="Pink" Text="Crear"></Button> -->
+
+            <StackLayout x:Name="formularioActualizar" BackgroundColor="Black" IsVisible="false" WidthRequest="145" HeightRequest="950" >
+                <Label Text="Actualizar Producto" HorizontalTextAlignment="Center" TextColor="Pink" FontSize="24"/>
+                <Entry x:Name="nombreEntry" Text=""  Margin="0,10,0,0" Grid.Row="1"  Placeholder="Nombre:" HeightRequest="40"/>
+                <Entry x:Name="categoriaEntry" Text=""  Grid.ColumnSpan="1" Margin="0,5,0,0" Grid.Row="2" Placeholder="Categoria:" HeightRequest="40"/>
+                <Entry  x:Name="precioEntry" Text="$"  Margin="0,5,0,0" Grid.Row="3" Placeholder="Precio:" HeightRequest="40"/>
+                <Entry x:Name="proveedorEntry" Text=""  Margin="0,5,0,0" Grid.Row="4" Placeholder="Proveedor:" HeightRequest="50"/>
+                <Entry x:Name="rutaEntry" Text="Resource/drawable/producto1.png"  Margin="0,5,0,0" Grid.Row="5" Placeholder="Ruta:" HeightRequest="40"/>
+                <Button x:Name="btnActualizarDB" Clicked="OnBtnActualizarDB" Text="Actualizar Registro BD" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  HorizontalOptions="End"   CornerRadius="8" VerticalOptions="Center"  BackgroundColor="Pink"/>
+            </StackLayout>
+            
+            <Button x:Name="btnRegresar" Clicked="OnBtnRegresar" BackgroundColor="Pink" Text="Regresar"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
